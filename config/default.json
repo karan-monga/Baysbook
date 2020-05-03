@@ -1,0 +1,5 @@
+{
+    "mongoURI": "mongodb+srv://karan:123@baysbook-nhjzd.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "secret",
+    "githubToken": ""
+  }

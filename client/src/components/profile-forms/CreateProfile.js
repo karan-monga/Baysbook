@@ -94,13 +94,13 @@ const CreateProfile = ({
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Skills"
+            placeholder="* interests"
             name="skills"
             value={skills}
             onChange={onChange}
           />
           <small className="form-text">
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+            Keywords that define you Eg: Hobbies, Interests etc.
           </small>
         </div>
 
