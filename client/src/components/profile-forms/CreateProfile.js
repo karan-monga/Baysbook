@@ -1,28 +1,45 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { Link, withRouter, Redirect } from 'react-router-dom';
+import React, { Fragment, useState, useEffect } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
-const CreateProfile = ({
+const initialState = {
+  company: '',
+  status: '',
+  skills: '',
+  githubusername: '',
+  bio: '',
+  twitter: '',
+  facebook: '',
+  linkedin: ''
+};
+
+const ProfileForm = ({
+  profile: { profile, loading },
   createProfile,
   getCurrentProfile,
-  profile: { profile, loading },
   history
 }) => {
-  const [formData, setFormData] = useState({
-    company: '',
-    status: '',
-    skills: '',
-    githubusername: '',
-    bio: '',
-    twitter: '',
-    facebook: '',
-    linkedin: '',
-    instagram: ''
-  });
+  const [formData, setFormData] = useState(initialState);
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
+  useEffect(() => {
+    if (!profile) getCurrentProfile();
+    if (!loading && profile) {
+      const profileData = { ...initialState };
+      for (const key in profile) {
+        if (key in profileData) profileData[key] = profile[key];
+      }
+      for (const key in profile.social) {
+        if (key in profileData) profileData[key] = profile.social[key];
+      }
+      if (Array.isArray(profileData.skills))
+        profileData.skills = profileData.skills.join(', ');
+      setFormData(profileData);
+    }
+  }, [loading, getCurrentProfile, profile]);
 
   const {
     company,
@@ -32,9 +49,7 @@ const CreateProfile = ({
     bio,
     twitter,
     facebook,
-    linkedin,
-
-    instagram
+    linkedin
   } = formData;
 
   const onChange = (e) =>
@@ -42,30 +57,25 @@ const CreateProfile = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, profile ? true : false);
   };
 
-  useEffect(() => {
-    getCurrentProfile();
-  }, [getCurrentProfile]);
-
-  return loading && profile === null ? (
-    <Redirect to="/dashboard" />
-  ) : (
+  return (
     <Fragment>
       <h1 className="large text-primary">Create Your Profile</h1>
       <p className="lead">
         <i className="fas fa-user" /> Make your profile stand out by adding some
         information
       </p>
+      <small>* = required field</small>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <select name="status" value={status} onChange={onChange}>
-            <option value="0">Select your standing</option>
-            <option value="Developer">Freshman</option>
-            <option value="Junior Developer">Sophomore</option>
-            <option value="Senior Developer">Junior</option>
-            <option value="Manager">Senior or above</option>
+            <option>* Select your standing</option>
+            <option value="Freshman">Freshman</option>
+            <option value="Sophomore">Sophomore</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior">Senior</option>
           </select>
         </div>
         <div className="form-group">
@@ -82,6 +92,31 @@ const CreateProfile = ({
         </div>
 
         <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Skills"
+            name="skills"
+            value={skills}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            Please use comma separated values (eg. Cooking,Drawing,Geometry)
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Github Username"
+            name="githubusername"
+            value={githubusername}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            If you want your latest repos and a Github link, include your
+            username
+          </small>
+        </div>
+        <div className="form-group">
           <textarea
             placeholder="A short bio of yourself"
             name="bio"
@@ -89,19 +124,6 @@ const CreateProfile = ({
             onChange={onChange}
           />
           <small className="form-text">Tell us a little about yourself</small>
-        </div>
-
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="* interests"
-            name="skills"
-            value={skills}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Keywords that define you Eg: Hobbies, Interests etc.
-          </small>
         </div>
 
         <div className="my-2">
@@ -114,6 +136,7 @@ const CreateProfile = ({
           </button>
           <span>Optional</span>
         </div>
+
         {displaySocialInputs && (
           <Fragment>
             <div className="form-group social-input">
@@ -139,17 +162,6 @@ const CreateProfile = ({
             </div>
 
             <div className="form-group social-input">
-              <i className="fab fa-github fa-2x" />
-              <input
-                type="text"
-                placeholder="GitHub URL"
-                name="github"
-                value={githubusername}
-                onChange={onChange}
-              />
-            </div>
-
-            <div className="form-group social-input">
               <i className="fab fa-linkedin fa-2x" />
               <input
                 type="text"
@@ -159,37 +171,28 @@ const CreateProfile = ({
                 onChange={onChange}
               />
             </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-instagram fa-2x" />
-              <input
-                type="text"
-                placeholder="Instagram URL"
-                name="instagram"
-                value={instagram}
-                onChange={onChange}
-              />
-            </div>
           </Fragment>
         )}
 
         <input type="submit" className="btn btn-primary my-1" />
+        <Link className="btn btn-light my-1" to="/dashboard">
+          Go Back
+        </Link>
       </form>
-      <Link className="btn btn-light my-1" to="/dashboard">
-        Go Back
-      </Link>
     </Fragment>
   );
 };
 
-CreateProfile.propTypes = {
+ProfileForm.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
+
 const mapStateToProps = (state) => ({
   profile: state.profile
 });
+
 export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
-  withRouter(CreateProfile)
+  withRouter(ProfileForm)
 );
