@@ -1,3 +1,5 @@
+// Registering authentication
+
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';

@@ -1,3 +1,5 @@
+// Edit, Add your dashboard (profile)
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 

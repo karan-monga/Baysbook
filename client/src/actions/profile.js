@@ -1,3 +1,5 @@
+// working with profiles (get current, get all, profile by id)
+
 import axios from 'axios';
 import { setAlert } from './alert';
 

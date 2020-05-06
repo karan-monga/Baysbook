@@ -1,3 +1,5 @@
+//Getting the current user profile
+
 const express = require('express');
 const request = require('request');
 const config = require('config');

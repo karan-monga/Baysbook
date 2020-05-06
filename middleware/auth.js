@@ -1,3 +1,5 @@
+// Web Token Verification 
+
 const jwt = require('jsonwebtoken');
 const config = require('config');
 

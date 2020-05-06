@@ -1,3 +1,5 @@
+// going back to login page
+
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';

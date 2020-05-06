@@ -1,3 +1,5 @@
+// Working with posts (Add, remove, delete)
+
 import axios from 'axios';
 import { setAlert } from './alert';
 import {
