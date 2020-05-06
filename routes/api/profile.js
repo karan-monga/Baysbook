@@ -39,12 +39,8 @@ router.post(
   [
     auth,
     [
-      check('status', 'Status is required')
-        .not()
-        .isEmpty(),
-      check('skills', 'Skills is required')
-        .not()
-        .isEmpty()
+      check('status', 'Status is required').not().isEmpty(),
+      check('skills', 'Skills is required').not().isEmpty()
     ]
   ],
   async (req, res) => {
@@ -54,34 +50,28 @@ router.post(
     }
     const {
       company,
-      location,
-      website,
-      bio,
-      skills,
       status,
+      skills,
       githubusername,
-      youtube,
+      bio,
       twitter,
-      instagram,
-      linkedin,
-      facebook
+      facebook,
+      linkedin
     } = req.body;
 
     const profileFields = {
       user: req.user.id,
       company,
-      location,
-      website: website === '' ? '' : normalize(website, { forceHttps: true }),
       bio,
       skills: Array.isArray(skills)
         ? skills
-        : skills.split(',').map(skill => ' ' + skill.trim()),
+        : skills.split(',').map((skill) => ' ' + skill.trim()),
       status,
       githubusername
     };
 
     // Build social object and add to profileFields
-    const socialfields = { youtube, twitter, instagram, linkedin, facebook };
+    const socialfields = { twitter, linkedin, facebook };
 
     for (const [key, value] of Object.entries(socialfields)) {
       if (value.length > 0)
@@ -165,16 +155,12 @@ router.put(
   [
     auth,
     [
-      check('title', 'Title is required')
-        .not()
-        .isEmpty(),
-      check('company', 'Company is required')
-        .not()
-        .isEmpty(),
+      check('title', 'Title is required').not().isEmpty(),
+      check('company', 'Company is required').not().isEmpty(),
       check('from', 'From date is required and needs to be from the past')
         .not()
         .isEmpty()
-        .custom((value, { req }) => req.body.to ? value < req.body.to : true)
+        .custom((value, { req }) => (req.body.to ? value < req.body.to : true))
     ]
   ],
   async (req, res) => {
@@ -227,7 +213,7 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
     const foundProfile = await Profile.findOne({ user: req.user.id });
 
     foundProfile.experience = foundProfile.experience.filter(
-      exp => exp._id.toString() !== req.params.exp_id
+      (exp) => exp._id.toString() !== req.params.exp_id
     );
 
     await foundProfile.save();
@@ -246,19 +232,13 @@ router.put(
   [
     auth,
     [
-      check('school', 'School is required')
-        .not()
-        .isEmpty(),
-      check('degree', 'Degree is required')
-        .not()
-        .isEmpty(),
-      check('fieldofstudy', 'Field of study is required')
-        .not()
-        .isEmpty(),
+      check('school', 'School is required').not().isEmpty(),
+      check('degree', 'Degree is required').not().isEmpty(),
+      check('fieldofstudy', 'Field of study is required').not().isEmpty(),
       check('from', 'From date is required and needs to be from the past')
         .not()
         .isEmpty()
-        .custom((value, { req }) => req.body.to ? value < req.body.to : true)
+        .custom((value, { req }) => (req.body.to ? value < req.body.to : true))
     ]
   ],
   async (req, res) => {
@@ -309,7 +289,7 @@ router.put(
 router.delete('/education/:edu_id', auth, async (req, res) => {
   try {
     const foundProfile = await Profile.findOne({ user: req.user.id });
-    const eduIds = foundProfile.education.map(edu => edu._id.toString());
+    const eduIds = foundProfile.education.map((edu) => edu._id.toString());
     const removeIndex = eduIds.indexOf(req.params.edu_id);
     if (removeIndex === -1) {
       return res.status(500).json({ msg: 'Server error' });

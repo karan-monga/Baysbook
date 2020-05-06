@@ -1,14 +1,19 @@
+![CSUEB Logo](/csueb-logo.jpg) 
+
+# BaysBook - Cal State East Bay's very own social media platform
+
 <h1 align="center">
-🌐 MERN Stack
+🌐 A MERN Stack Web Application
 </h1>
-<p align="center">
-MongoDB, Expressjs, React/Redux, Nodejs
-</p>
 
 
 > MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
 
-MERN stack is the idea of using Javascript/Node for fullstack web development.
+
+## Prerequirements
+- [MongoDB](https://gist.github.com/nrollr/9f523ae17ecdbb50311980503409aeb3)
+- [Node](https://nodejs.org/en/download/) ^10.0.0
+- [npm](https://nodejs.org/en/download/package-manager/)
 
 ## Clone or download
 ```terminal
@@ -44,18 +49,7 @@ LICENSE
 package.json
 server/
    package.json
-   .env (to create .env, check [prepare your secret session])
 client/
    package.json
 ...
 ```
-
-# Usage (run fullstack app on your machine)
-
-## Prerequirements
-- [MongoDB](https://gist.github.com/nrollr/9f523ae17ecdbb50311980503409aeb3)
-- [Node](https://nodejs.org/en/download/) ^10.0.0
-- [npm](https://nodejs.org/en/download/package-manager/)
-
-You need the client and server side run concurrently in different terminal session, in order to make them talk to each other
-
