@@ -14,6 +14,12 @@ MongoDB, Expressjs, React/Redux, Nodejs
 
 MERN stack is the idea of using Javascript/Node for fullstack web development.
 
+
+## Prerequirements
+- [MongoDB](https://gist.github.com/nrollr/9f523ae17ecdbb50311980503409aeb3)
+- [Node](https://nodejs.org/en/download/) ^10.0.0
+- [npm](https://nodejs.org/en/download/package-manager/)
+
 ## Clone or download
 ```terminal
 $ git clone https://gitlab.com/software-engineering4/baysbook.git
@@ -53,13 +59,6 @@ client/
    package.json
 ...
 ```
-
-# Usage (run fullstack app on your machine)
-
-## Prerequirements
-- [MongoDB](https://gist.github.com/nrollr/9f523ae17ecdbb50311980503409aeb3)
-- [Node](https://nodejs.org/en/download/) ^10.0.0
-- [npm](https://nodejs.org/en/download/package-manager/)
 
 You need the client and server side run concurrently in different terminal session, in order to make them talk to each other
 
