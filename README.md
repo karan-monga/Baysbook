@@ -1,3 +1,6 @@
+![CSUEB Logo](https://gitlab.com/james.tandon/s2020-ctrlaltelite/csueb-logo.jpg)
+
+
 <h1 align="center">
 🌐 MERN Stack
 </h1>
