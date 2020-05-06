@@ -62,10 +62,10 @@ const CreateProfile = ({
         <div className="form-group">
           <select name="status" value={status} onChange={onChange}>
             <option value="0">Select your standing</option>
-            <option value="Developer">Freshman</option>
-            <option value="Junior Developer">Sophomore</option>
-            <option value="Senior Developer">Junior</option>
-            <option value="Manager">Senior or above</option>
+            <option value="Freshman">Freshman</option>
+            <option value="Sophomore">Sophomore</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior or above">Senior or above</option>
           </select>
         </div>
         <div className="form-group">
@@ -172,7 +172,7 @@ const CreateProfile = ({
             </div>
           </Fragment>
         )}
-
+  
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
