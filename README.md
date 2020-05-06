@@ -54,11 +54,7 @@ LICENSE
 package.json
 server/
    package.json
-   .env (to create .env, check [prepare your secret session])
 client/
    package.json
 ...
 ```
-
-You need the client and server side run concurrently in different terminal session, in order to make them talk to each other
-
