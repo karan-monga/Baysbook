@@ -1,4 +1,4 @@
-![CSUEB Logo](/csueb-logo.jpg) 
+![CSUEB Logo](/Images/csueb-logo.jpg) 
 
 # BaysBook - Cal State East Bay's very own social media platform
 
