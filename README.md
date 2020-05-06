@@ -1,8 +1,9 @@
-![CSUEB Logo](https://gitlab.com/james.tandon/s2020-ctrlaltelite/csueb-logo.jpg)
+![CSUEB Logo](/csueb-logo.jpg) 
 
+# BaysBook - Cal State East Bay's very own social media platform
 
 <h1 align="center">
-🌐 MERN Stack
+🌐 A MERN Stack Web Application
 </h1>
 <p align="center">
 MongoDB, Expressjs, React/Redux, Nodejs
