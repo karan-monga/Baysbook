@@ -17,9 +17,9 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className='large text-primary'>Posts</h1>
+      <h1 className='large text-primary'>Newsfeed</h1>
       <p className='lead'>
-        <i className='fas fa-user' /> Welcome to the community
+       Welcome to BaysBook
       </p>
       <PostForm />
       <div className='posts'>
