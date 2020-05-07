@@ -1,3 +1,7 @@
+// Requesting and also Body validation
+// Registering the User
+// Implementing JWT Authentication
+
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
