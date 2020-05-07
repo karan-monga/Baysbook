@@ -26,7 +26,7 @@ const Navbar = ({
       <li>
         <Link to='/profiles'>
           <i className="fas fa-user" />{' '}
-          <span className="hide-sm">My Profile</span>
+          <span className="hide-sm">Students</span>
         </Link>
       </li>
       <li>
