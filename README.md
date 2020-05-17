@@ -46,7 +46,7 @@ $ npm install
 
 ```terminal
 $ cd ..
-$ npm run-dev
+$ npm run dev
 ```
 
 ## Project structure
