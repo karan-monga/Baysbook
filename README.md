@@ -17,7 +17,7 @@
 ## Clone or download
 
 ```terminal
-$ git clone https://gitlab.com/software-engineering4/baysbook.git
+$ git clone https://github.com/karan-monga/Baysbook.git
 $ npm i
 ```
 
