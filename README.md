@@ -2,6 +2,8 @@
 
 # BaysBook - Cal State East Bay's very own social media platform
 
+## Live Website: https://glacial-journey-55442.herokuapp.com/
+
 <h1 align="center">
 🌐 A MERN Stack Web Application
 </h1>
